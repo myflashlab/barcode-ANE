@@ -5,3 +5,4 @@ Jan 31, 2013	>> V1.0: 	beginning of the journey!
 Mar 03, 2013	>> V1.1:	there was a bug when compiling with Flex SDK 4.6 which is now fixed
 Jan 28, 2015 	>> V2.0: 	added support for iOS devices including 64-bit arch
 May 16, 2015 	>> V2.1: 	removed android-support-v4.jar dependency
+Nov 02, 2015 	>> V2.9: 	doitflash devs merged into MyFLashLab Team.

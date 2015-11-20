@@ -11,8 +11,8 @@ you may like to see the ANE in action? check this out: https://github.com/myflas
 
 # AS3 API:
 ```actionscript
-import com.doitflash.air.extensions.barcode.Barcode;
-import com.doitflash.air.extensions.barcode.BarcodeEvent;
+import com.myflashlab.air.extensions.barcode.Barcode;
+import com.myflashlab.air.extensions.barcode.BarcodeEvent;
 
 var _ex:Barcode = new Barcode();
 _ex.addEventListener(BarcodeEvent.CANCEL, onCancel);

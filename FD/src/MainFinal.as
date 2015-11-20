@@ -1,7 +1,7 @@
 package 
 {
-	import com.doitflash.air.extensions.barcode.Barcode;
-	import com.doitflash.air.extensions.barcode.BarcodeEvent;
+	import com.myflashlab.air.extensions.barcode.Barcode;
+	import com.myflashlab.air.extensions.barcode.BarcodeEvent;
 	import com.doitflash.consts.Direction;
 	import com.doitflash.consts.Orientation;
 	import com.doitflash.starling.utils.list.List;
