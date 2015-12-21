@@ -157,6 +157,9 @@ package
 		
 		private function init():void
 		{
+			// required only if you are a member of the club
+			Barcode.clubId = "paypal-address-you-used-to-join-the-club";
+			
 			// initialize the extension
 			_ex = new Barcode();
 			_ex.addEventListener(BarcodeEvent.CANCEL, onCancel);

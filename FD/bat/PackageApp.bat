@@ -1,7 +1,11 @@
 @echo off
+
+:: Set working dir
+cd %~dp0 & cd ..
+
 set PAUSE_ERRORS=1
 call bat\SetupSDK.bat
-call bat\SetupApplication.bat
+call bat\SetupApp.bat
 
 :menu
 echo.
@@ -30,7 +34,8 @@ echo.
 set PLATFORM=android
 set OPTIONS=
 if %C% GTR 3 set PLATFORM=ios
-if %C% GTR 7 set PLATFORM=ios-dist
+if %C% GTR 7 set PLATFORM=ios-adhoc
+if %C% GTR 8 set PLATFORM=ios-dist
 
 if "%C%"=="1" set TARGET=
 if "%C%"=="2" set TARGET=-debug
@@ -47,4 +52,37 @@ if "%C%"=="8" set TARGET=-ad-hoc
 if "%C%"=="9" set TARGET=-app-store
 
 call bat\Packager.bat
+
+if "%PLATFORM%"=="android" goto android-package
+
+:ios-package
+if "%AUTO_INSTALL_IOS%" == "yes" goto ios-install
+echo Now manually install and start application on device
+echo.
+goto end
+
+:ios-install
+echo Installing application for testing on iOS (%DEBUG_IP%)
+echo.
+call adt -installApp -platform ios -package "%OUTPUT%"
+if errorlevel 1 goto installfail
+
+echo Now manually start application on device
+echo.
+goto end
+
+:android-package
+adb devices
+echo.
+echo Installing %OUTPUT% on the device...
+echo.
+adb -d install -r "%OUTPUT%"
+if errorlevel 1 goto installfail
+goto end
+
+:installfail
+echo.
+echo Installing the app on the device failed
+
+:end
 pause

@@ -1,7 +1,7 @@
 # QR code reader ANE (Android+iOS)
 Air QR scanner extension enables AS3 air developers, to easily use the native camera on device and scan for QR codes and get the result to their air project.
 
-checkout here for the commercial version: http://myappsnippet.com/qr-code-scanner-native-extension-adobe-air/
+checkout here for the commercial version: http://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
 
 ![QR code reader ANE](http://myappsnippet.com/wp-content/uploads/2015/01/adobe-air-extension_qrcode-reader.jpg)
 
