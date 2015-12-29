@@ -1,21 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <application xmlns="http://ns.adobe.com/air/application/19.0">
   <id>com.doitflash.exBarcode</id>
-  <versionNumber>2.9.1</versionNumber>
+  <versionNumber>3.0.0</versionNumber>
   <supportedProfiles>mobileDevice</supportedProfiles>
   <filename>exBarcode</filename>
   <name>QR Code</name>
   <android>
     <manifestAdditions><![CDATA[<manifest android:installLocation="auto">
-	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.INTERNET" />
+		
+	<!--You surely need permission to use the camera, right?-->
+	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-feature android:name="android.hardware.camera" />
 	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
-	<uses-feature android:name="android.hardware.camera.flash" android:required="false" />
 	<uses-feature android:name="android.hardware.screen.landscape" />
-	<uses-feature android:name="android.hardware.touchscreen" android:required="false" />
-	<supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true" />
+		
+	<!--If you wish to use the vibration when a barcode is detected, you need to set the permission like below-->
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	
+	<!--Android 15 or higher can support this ANE-->
+	<uses-sdk android:minSdkVersion="15" />
+		
+	<!--Zxing lib requires you to set this screen supports-->
+	<supports-screens 	android:anyDensity="true" 
+						android:largeScreens="true" 
+						android:normalScreens="true" 
+						android:smallScreens="true" 
+						android:xlargeScreens="true" />
+		
 	<application>
+		
 		<activity>
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -27,35 +41,45 @@
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
-		<activity android:name="com.google.zxing.client.android.CaptureActivity" android:clearTaskOnLaunch="true" android:configChanges="orientation|keyboardHidden" android:stateNotNeeded="true" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateAlwaysHidden">
-			<intent-filter>
-				<action android:name="air.com.doitflash.exBarcode" />
-				<category android:name="android.intent.category.DEFAULT" />
-			</intent-filter>
-		</activity>
-		<activity android:name="com.google.zxing.client.android.PreferencesActivity" android:label="Settings" android:stateNotNeeded="true"></activity>
-		<activity android:name="com.doitflash.barcode.MainActivity" android:label="Barcode Scanner">
-			<intent-filter>
-				<category android:name="android.intent.category.DEFAULT" />
-			</intent-filter>
-		</activity>
+		
+		<!--Main activity for detecting barcodes-->
+		<activity 	android:name="com.google.zxing.client.android.CaptureActivity" 
+					android:clearTaskOnLaunch="true" 
+					android:screenOrientation="landscape" 
+					android:configChanges="orientation|keyboardHidden" 
+					android:stateNotNeeded="true" 
+					android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+					android:windowSoftInputMode="stateAlwaysHidden" />
+		
+		<!--bridge activity between Native Android and Adobe Air-->
+		<activity 	android:name="com.doitflash.barcode.utils.ExBridge" 
+					android:theme="@style/Theme.Transparent" />
+		
 	</application>
 </manifest>]]></manifestAdditions>
   </android>
   <iPhone>
     <!--https://developer.apple.com/library/ios/documentation/general/reference/infoplistkeyreference/Articles/iPhoneOSKeys.html-->
     <!--http://help.adobe.com/en_US/air/build/WSfffb011ac560372f7e64a7f12cd2dd1867-8000.html-->
-    <InfoAdditions><![CDATA[<key>MinimumOSVersion</key>
-<string>6.1</string>
-<key>UIStatusBarStyle</key>
-<string>UIStatusBarStyleBlackOpaque</string>
-<key>UIRequiresPersistentWiFi</key>
-<string>NO</string>
-<key>UIDeviceFamily</key>
-<array>
-	<string>1</string>
-	<string>2</string>
-</array>]]></InfoAdditions>
+    <InfoAdditions><![CDATA[
+	
+		<!--iOS 8.0 or higher can support this ANE-->
+		<key>MinimumOSVersion</key>
+		<string>8.0</string>
+			
+		<key>UIStatusBarStyle</key>
+		<string>UIStatusBarStyleBlackOpaque</string>
+			
+		<key>UIRequiresPersistentWiFi</key>
+		<string>NO</string>
+			
+		<key>UIDeviceFamily</key>
+		<array>
+			<string>1</string>
+			<string>2</string>
+		</array>
+		
+	]]></InfoAdditions>
     <requestedDisplayResolution>high</requestedDisplayResolution>
   </iPhone>
   <initialWindow>
@@ -64,7 +88,7 @@
     <visible>true</visible>
     <fullScreen>true</fullScreen>
     <autoOrients>true</autoOrients>
-    <aspectRatio>portrait</aspectRatio>
+    <!--<aspectRatio>portrait</aspectRatio>-->
     <renderMode>auto</renderMode>
     <!--<depthAndStencil>true</depthAndStencil>-->
     <!-- required for 3D -->

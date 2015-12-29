@@ -16,6 +16,7 @@ package
 	import flash.events.InvokeEvent;
 	import flash.events.MouseEvent;
 	import flash.events.StageOrientationEvent;
+	import flash.filesystem.File;
 	import flash.text.AntiAliasType;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
@@ -26,6 +27,7 @@ package
 	import flash.ui.Keyboard;
 	import flash.events.KeyboardEvent;
 	import com.doitflash.mobileProject.commonCpuSrc.DeviceInfo;
+	import flash.events.StatusEvent;
 	//import flash.display.StageOrientation;
 	
 	
@@ -44,7 +46,6 @@ package
 		private var _body:Sprite;
 		private var _list:List;
 		private var _numRows:int = 1;
-		//private var _defaultOrientation:String;
 		
 		public function MainFinal():void 
 		{
@@ -55,7 +56,6 @@ package
 			NativeApplication.nativeApplication.addEventListener(KeyboardEvent.KEY_DOWN, handleKeys, false, 0, true);
 			
 			stage.addEventListener(Event.RESIZE, onResize);
-			//stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGE, onChangeOrientation);
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
 			
@@ -94,11 +94,6 @@ package
 			onResize();
 		}
 		
-		/*private function onChangeOrientation(e:StageOrientationEvent):void
-		{
-			trace("onChangeOrientation: ", stage.stageWidth, stage.stageHeight);
-		}*/
-		
 		private function onInvoke(e:InvokeEvent):void
 		{
 			NativeApplication.nativeApplication.removeEventListener(InvokeEvent.INVOKE, onInvoke);
@@ -116,7 +111,7 @@ package
 		
 		private function handleDeactivate(e:Event):void
 		{
-			//NativeApplication.nativeApplication.exit();
+			NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.NORMAL;
 		}
 		
 		private function handleKeys(e:KeyboardEvent):void
@@ -162,10 +157,8 @@ package
 			
 			// initialize the extension
 			_ex = new Barcode();
-			_ex.addEventListener(BarcodeEvent.CANCEL, onCancel);
 			_ex.addEventListener(BarcodeEvent.RESULT, onResult);
-			_ex.setBtns("OK", "RETRY", "CANCEL");
-			_ex.closeOnResultFounded = false;
+			_ex.addEventListener(BarcodeEvent.CANCEL, onCancel);
 			
 			var btn1:MySprite = createBtn("open Scanner");
 			btn1.addEventListener(MouseEvent.CLICK, open);
@@ -173,44 +166,40 @@ package
 			
 			function open(e:MouseEvent):void
 			{
-				//_defaultOrientation = stage.orientation;
 				if (_ex.isSupported())
 				{
-					_ex.open();
+					C.log("Please wait...");
+					
+					// TODO: Known bug on ios: the beep mp3 file must be in the same folder where the main Adobe Air .swf file is.
+					
+					
+					
+					// to read only the selected barcode types. use an array to read one or more barcodes
+					//_ex.open([Barcode.QR], File.applicationDirectory.resolvePath("com_doitflash_barcode_beep.mp3"), true, "back to The Air APP! :D");
+					
+					// to read all barcodes supported by the extension. read documentations to know which barcodes are supported.
+					_ex.open(null, File.applicationDirectory.resolvePath("com_doitflash_barcode_beep.mp3"), true, "back to The Air APP! :D");
 				}
-			}
-			
-			var btn2:MySprite = createBtn("isSupported");
-			btn2.addEventListener(MouseEvent.CLICK, support);
-			_list.add(btn2);
-			
-			function support(e:MouseEvent):void
-			{
-				C.log("isSupported: ", _ex.isSupported());
+				else
+				{
+					C.log("isSupported: ", _ex.isSupported());
+				}
 			}
 		}
 		
 		private function onCancel(e:BarcodeEvent):void
 		{
-			C.log("canceled")
-			//checkOrientation();
+			C.log("scan canceled")
 		}
 		
 		private function onResult(e:BarcodeEvent):void
 		{
-			C.log("result >> type is: ", e.param.type)
+			C.log("type is: ", e.param.type)
 			C.log("data is: ", e.param.data);
-			trace("result >> type is: ", e.param.type)
+			
+			trace("type is: ", e.param.type)
 			trace("data is: ", e.param.data);
-			//checkOrientation();
 		}
-		
-		/*private function checkOrientation():void
-		{
-			trace("checkOrientation: ", stage.stageWidth, stage.stageHeight, _defaultOrientation);
-			stage.setOrientation(_defaultOrientation);
-		}*/
-		
 		
 		
 		
