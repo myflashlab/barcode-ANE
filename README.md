@@ -1,4 +1,4 @@
-# Barcode ANE V3.0.0 (Android+iOS)
+# Barcode ANE V3.1.0 (Android+iOS)
 This ANE enables AS3 air developers, to easily use the native camera on device and scan for almost all different barcodes and get the result to their air project.
 
 ## Supported barcodes:
@@ -139,3 +139,18 @@ function onResult(e:BarcodeEvent):void
 # Requirements:
 * Android SDK 15 or higher
 * iOS 8.0 or higher
+
+# Changelog
+* Jan 31, 2013	>> V1.0: 	beginning of the journey!
+* Mar 03, 2013	>> V1.1:	there was a bug when compiling with Flex SDK 4.6 which is now fixed
+* Jan 28, 2015 	>> V2.0: 	added support for iOS devices including 64-bit arch
+* May 16, 2015 	>> V2.1: 	removed android-support-v4.jar dependency
+* Nov 02, 2015 	>> V2.9: 	doitflash devs merged into MyFLashLab Team.
+* Dec 20, 2015 	>> V2.9.1: 	minor bug fixes
+* Dec 29, 2015 	>> V3.0.0: 	added optional beep sound and vibration when a barcode is detected
+  *				Added support for almost all barcodes including: UPCE, CODE39, EAN13, EAN8, CODE128, PDF417, QR, AZTEC, ITF14, DATAMATRIX
+				
+* Jan 20, 2016 	>> V3.1.0: 	bypassing xCode 7.2 bug causing iOS conflict when compiling with AirSDK 20 without waiting on Adobe or Apple to fix the problem.
+  *							This is a must have upgrade for your app to make sure you can compile multiple ANEs in your project with AirSDK 20 or greater.
+  *							https://forums.adobe.com/thread/2055508
+  *							https://forums.adobe.com/message/8294948
