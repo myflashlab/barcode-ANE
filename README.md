@@ -13,15 +13,13 @@ This ANE enables AS3 air developers, to easily use the native camera on device a
 * ITF14
 * DATAMATRIX
 
-checkout here for the commercial version: http://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
+# Demo .apk
+you may like to see the ANE in action? [Download demo .apk](https://github.com/myflashlab/barcode-ANE/tree/master/FD/dist)
 
-![Barcode code scanner ANE](http://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-qr-code-595x738.jpg)
+**NOTICE**: the demo ANE works only after you hit the "OK" button in the dialog which opens. in your tests make sure that you are NOT calling other ANE methods prior to hitting the "OK" button.
+[Download the ANE](https://github.com/myflashlab/barcode-ANE/tree/master/FD/lib)
 
-you may like to see the ANE in action? check this out: https://github.com/myflashlab/barcode-ANE/tree/master/FD/dist
-
-**NOTICE: the demo ANE works only after you hit the "OK" button in the dialog which opens. in your tests make sure that you are NOT calling other ANE methods prior to hitting the "OK" button.**
-
-# AS3 API:
+# Air Usage:
 ```actionscript
 import com.myflashlab.air.extensions.barcode.Barcode;
 import com.myflashlab.air.extensions.barcode.BarcodeEvent;
@@ -140,17 +138,43 @@ function onResult(e:BarcodeEvent):void
 * Android SDK 15 or higher
 * iOS 8.0 or higher
 
+# Commercial Version
+http://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
+
+![Barcode code scanner ANE](http://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-qr-code-595x738.jpg)
+
+# Tutorials
+[How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)
+
 # Changelog
-* Jan 31, 2013	>> V1.0: 	beginning of the journey!
-* Mar 03, 2013	>> V1.1:	there was a bug when compiling with Flex SDK 4.6 which is now fixed
-* Jan 28, 2015 	>> V2.0: 	added support for iOS devices including 64-bit arch
-* May 16, 2015 	>> V2.1: 	removed android-support-v4.jar dependency
-* Nov 02, 2015 	>> V2.9: 	doitflash devs merged into MyFLashLab Team.
-* Dec 20, 2015 	>> V2.9.1: 	minor bug fixes
-* Dec 29, 2015 	>> V3.0.0: 	added optional beep sound and vibration when a barcode is detected
-  *				Added support for almost all barcodes including: UPCE, CODE39, EAN13, EAN8, CODE128, PDF417, QR, AZTEC, ITF14, DATAMATRIX
-				
-* Jan 20, 2016 	>> V3.1.0: 	bypassing xCode 7.2 bug causing iOS conflict when compiling with AirSDK 20 without waiting on Adobe or Apple to fix the problem.
-  *							This is a must have upgrade for your app to make sure you can compile multiple ANEs in your project with AirSDK 20 or greater.
-  *							https://forums.adobe.com/thread/2055508
-  *							https://forums.adobe.com/message/8294948
+*Jan 20, 2016 - 3.1.0*
+* bypassing xCode 7.2 bug causing iOS conflict when compiling with AirSDK 20 without waiting on Adobe or Apple to fix the problem. This is a must have upgrade for your app to make sure you can compile multiple ANEs in your project with AirSDK 20 or greater. https://forums.adobe.com/thread/2055508 https://forums.adobe.com/message/8294948
+
+
+*Dec 29, 2015 - 3.0.0*
+* added optional beep sound and vibration when a barcode is detected
+* Added support for almost all barcodes including: UPCE, CODE39, EAN13, EAN8, CODE128, PDF417, QR, AZTEC, ITF14, DATAMATRIX
+
+
+*Dec 20, 2015 - 2.9.1*
+* minor bug fixes
+
+
+*Nov 02, 2015 - V2.9*
+* doitflash devs merged into MyFLashLab Team.
+
+
+*May 16, 2015 - V2.1*
+* removed android-support-v4.jar dependency
+
+
+*Jan 28, 2015 - V2.0*
+* added support for iOS devices including 64-bit arch
+
+
+*Mar 03, 2013 - V1.1*
+* there was a bug when compiling with Flex SDK 4.6 which is now fixed
+
+
+*Jan 31, 2013 - V1.0*
+* beginning of the journey!
