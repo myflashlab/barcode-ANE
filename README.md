@@ -19,7 +19,7 @@ you may like to see the ANE in action? [Download demo .apk](https://github.com/m
 **NOTICE**: the demo ANE works only after you hit the "OK" button in the dialog which opens. in your tests make sure that you are NOT calling other ANE methods prior to hitting the "OK" button.
 [Download the ANE](https://github.com/myflashlab/barcode-ANE/tree/master/FD/lib)
 
-# Air Usage:
+# Air Usage
 ```actionscript
 import com.myflashlab.air.extensions.barcode.Barcode;
 import com.myflashlab.air.extensions.barcode.BarcodeEvent;
@@ -134,7 +134,7 @@ function onResult(e:BarcodeEvent):void
   </iPhone>
 ```
 
-# Requirements:
+# Requirements
 * Android SDK 15 or higher
 * iOS 8.0 or higher
 
@@ -144,7 +144,7 @@ http://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
 ![Barcode code scanner ANE](http://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-qr-code-595x738.jpg)
 
 # Tutorials
-[How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)
+[How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
 *Jan 20, 2016 - 3.1.0*
