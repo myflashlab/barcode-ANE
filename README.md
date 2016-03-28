@@ -1,4 +1,4 @@
-# Barcode ANE V3.1.0 (Android+iOS)
+# Barcode ANE V3.1.1 (Android+iOS)
 This ANE enables AS3 air developers, to easily use the native camera on device and scan for almost all different barcodes and get the result to their air project.
 
 ## Supported barcodes:
@@ -135,7 +135,8 @@ function onResult(e:BarcodeEvent):void
 ```
 
 # Requirements
-* Android SDK 15 or higher
+* Adobe Air SDK 19 or higher
+* Android 15 or higher
 * iOS 8.0 or higher
 
 # Commercial Version
@@ -147,6 +148,10 @@ http://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
+*Mar 28, 2016 - 3.1.1*
+* Fixed a bug related to wrongly showing a broken menu on Android devices with a hardware menu key. 
+
+
 *Jan 20, 2016 - 3.1.0*
 * bypassing xCode 7.2 bug causing iOS conflict when compiling with AirSDK 20 without waiting on Adobe or Apple to fix the problem. This is a must have upgrade for your app to make sure you can compile multiple ANEs in your project with AirSDK 20 or greater. https://forums.adobe.com/thread/2055508 https://forums.adobe.com/message/8294948
 
