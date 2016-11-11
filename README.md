@@ -1,5 +1,5 @@
-# Barcode ANE V3.1.1 (Android+iOS)
-This ANE enables AS3 air developers, to easily use the native camera on device and scan for almost all different barcodes and get the result to their air project.
+# Barcode ANE V3.2.0 (Android+iOS)
+This ANE enables AS3 AIR developers, to easily use the native camera on device and scan for almost all different barcodes and get the result to their AIR project.
 
 ## Supported barcodes:
 * UPCE
@@ -22,7 +22,9 @@ you may like to see the ANE in action? [Download demo .apk](https://github.com/m
 **NOTICE**: the demo ANE works only after you hit the "OK" button in the dialog which opens. in your tests make sure that you are NOT calling other ANE methods prior to hitting the "OK" button.
 [Download the ANE](https://github.com/myflashlab/barcode-ANE/tree/master/FD/lib)
 
-# Air Usage
+# AIR Usage
+For the complete AS3 code usage, see the [demo project here](https://github.com/myflashlab/barcode-ANE/blob/master/FD/src/MainFinal.as).
+
 ```actionscript
 import com.myflashlab.air.extensions.barcode.Barcode;
 import com.myflashlab.air.extensions.barcode.BarcodeEvent;
@@ -58,24 +60,28 @@ function onResult(e:BarcodeEvent):void
 }
 ```
 
-# Air .xml manifest
+# AIR .xml manifest
 ```xml
-  <android>
-    <manifestAdditions><![CDATA[<manifest android:installLocation="auto">
-	<uses-permission android:name="android.permission.INTERNET" />
-		
+<!--
+FOR ANDROID:
+-->
+<manifest android:installLocation="auto">
+	
 	<!--You surely need permission to use the camera, right?-->
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-feature android:name="android.hardware.camera" />
 	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
 	<uses-feature android:name="android.hardware.screen.landscape" />
-		
+	
 	<!--If you wish to use the vibration when a barcode is detected, you need to set the permission like below-->
 	<uses-permission android:name="android.permission.VIBRATE"/>
 	
 	<!--Android 15 or higher can support this ANE-->
 	<uses-sdk android:minSdkVersion="15" />
-		
+	
+	<!--The new Permission thing on Android works ONLY if you are targetting Android SDK 23 or higher-->
+	<uses-sdk android:targetSdkVersion="23"/>
+	
 	<!--Zxing lib requires you to set this screen supports-->
 	<supports-screens 	android:anyDensity="true" 
 						android:largeScreens="true" 
@@ -111,36 +117,68 @@ function onResult(e:BarcodeEvent):void
 					android:theme="@style/Theme.Transparent" />
 		
 	</application>
-</manifest>]]></manifestAdditions>
-  </android>
-  <iPhone>
-    <InfoAdditions><![CDATA[
+</manifest>
+
+
+
+
+
+
+
+<!--
+FOR iOS:
+-->
+<InfoAdditions>
 	
-		<!--iOS 8.0 or higher can support this ANE-->
-		<key>MinimumOSVersion</key>
-		<string>8.0</string>
-			
-		<key>UIStatusBarStyle</key>
-		<string>UIStatusBarStyleBlackOpaque</string>
-			
-		<key>UIRequiresPersistentWiFi</key>
-		<string>NO</string>
-			
-		<key>UIDeviceFamily</key>
-		<array>
-			<string>1</string>
-			<string>2</string>
-		</array>
-		
-	]]></InfoAdditions>
-    <requestedDisplayResolution>high</requestedDisplayResolution>
-  </iPhone>
+	<!--iOS 8.0 or higher can support this ANE-->
+	<key>MinimumOSVersion</key>
+	<string>8.0</string>
+	
+	<!--A new feature for iOS 10 submissions requires you to add the 'purpose string' to your app when accessing a user's private data-->
+	<key>NSCameraUsageDescription</key>
+	<string>My description about why I need this feature in my app</string>
+	
+</InfoAdditions>
+
+
+
+
+
+
+<!--
+Embedding the ANE:
+-->
+<extensions>
+
+	<extensionID>com.myflashlab.air.extensions.barcode</extensionID>
+	
+	<!-- Required if you are targeting AIR 24+ and have to take care of Permissions mannually -->
+	<extensionID>com.myflashlab.air.extensions.permissionCheck</extensionID>
+	
+	<!-- The following dependency ANEs are only required when compiling for Android -->
+	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
+	
+</extensions>
 ```
 
 # Requirements
-* Adobe Air SDK 19 or higher
+* This ANE is dependent on **androidSupport.ane** and **overrideAir.ane**. Download them from [here](https://github.com/myflashlab/common-dependencies-ANE).
+* Adobe AIR SDK 19 or higher
 * Android 15 or higher
 * iOS 8.0 or higher
+
+# Permissions
+If you are targeting AIR 24 or higher, you need to [take care of the permissions mannually](http://www.myflashlabs.com/adobe-air-app-permissions-android-ios/). Below are the list of Permissions this ANE might require. (Note: *Necessary Permissions* are those that the ANE will NOT work without them and *Optional Permissions* are those which are needed only if you are using some specific features in the ANE.)
+
+Check out the demo project available at this repository to see how we have used our [PermissionCheck ANE](http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/) to ask for the permissions.
+
+**Necessary Permissions:**  
+
+1. PermissionCheck.SOURCE_CAMERA
+
+**Optional Permissions:**  
+none
 
 # Commercial Version
 http://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
@@ -151,6 +189,10 @@ http://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
+*Nov 11, 2016 - 3.2.0*
+* Optimized for Android manual permissions if you are targeting AIR SDK 24+
+* From now on, this ANE will depend on androidSupport.ane and overrideAir.ane on the Android side
+
 *Mar 28, 2016 - 3.1.1*
 * Fixed a bug related to wrongly showing a broken menu on Android devices with a hardware menu key. 
 

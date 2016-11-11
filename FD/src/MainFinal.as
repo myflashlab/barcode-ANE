@@ -2,6 +2,8 @@ package
 {
 	import com.myflashlab.air.extensions.barcode.Barcode;
 	import com.myflashlab.air.extensions.barcode.BarcodeEvent;
+	import com.myflashlab.air.extensions.nativePermissions.PermissionCheck;
+	
 	import com.doitflash.consts.Direction;
 	import com.doitflash.consts.Orientation;
 	import com.doitflash.starling.utils.list.List;
@@ -29,7 +31,10 @@ package
 	import com.doitflash.mobileProject.commonCpuSrc.DeviceInfo;
 	import flash.events.StatusEvent;
 	//import flash.display.StageOrientation;
-	
+	import flash.utils.getDefinitionByName;
+	import flash.utils.getQualifiedClassName;
+	import flash.utils.getQualifiedSuperclassName;
+	import flash.system.Capabilities;
 	
 	/**
 	 * ...
@@ -38,6 +43,7 @@ package
 	public class MainFinal extends Sprite 
 	{
 		private var _ex:Barcode;
+		private var _exPermissions:PermissionCheck = new PermissionCheck();
 		
 		private const BTN_WIDTH:Number = 150;
 		private const BTN_HEIGHT:Number = 60;
@@ -90,8 +96,7 @@ package
 			_list.vDirection = Direction.TOP_TO_BOTTOM;
 			_list.space = BTN_SPACE;
 			
-			init();
-			onResize();
+			checkPermissions();
 		}
 		
 		private function onInvoke(e:InvokeEvent):void
@@ -148,13 +153,35 @@ package
 			}
 		}
 		
-		
+		private function checkPermissions():void
+		{
+			// first you need to make sure you have access to the Strorage if you are on Android?
+			var permissionState:int = _exPermissions.check(PermissionCheck.SOURCE_CAMERA);
+			
+			if (permissionState == PermissionCheck.PERMISSION_UNKNOWN || permissionState == PermissionCheck.PERMISSION_DENIED)
+			{
+				_exPermissions.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
+			}
+			else
+			{
+				init();
+			}
+			
+			function onRequestResult($state:int):void
+			{
+				if ($state != PermissionCheck.PERMISSION_GRANTED)
+				{
+					C.log("You did not allow the app the required permissions!");
+				}
+				else
+				{
+					init();
+				}
+			}
+		}
 		
 		private function init():void
 		{
-			// required only if you are a member of the club
-			Barcode.clubId = "paypal-address-you-used-to-join-the-club";
-			
 			// initialize the extension
 			_ex = new Barcode();
 			_ex.addEventListener(BarcodeEvent.RESULT, onResult);

@@ -1,4 +1,9 @@
-QR Code Scanner Adobe Air Native Extension
+Barcode Scanner Adobe AIR Native Extension
+
+*Nov 11, 2016 - 3.2.0*
+* Optimized for Android manual permissions if you are targeting AIR SDK 24+
+* From now on, this ANE will depend on androidSupport.ane and overrideAir.ane on the Android side
+* 
 
 *Mar 28, 2016 - 3.1.1*
 * Fixed a bug related to wrongly showing a broken menu on Android devices with a hardware menu key. 

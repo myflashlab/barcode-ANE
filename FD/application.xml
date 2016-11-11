@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<application xmlns="http://ns.adobe.com/air/application/20.0">
+<application xmlns="http://ns.adobe.com/air/application/24.0">
   <id>com.doitflash.exBarcode</id>
-  <versionNumber>3.1.1</versionNumber>
+  <versionNumber>3.2.0</versionNumber>
   <supportedProfiles>mobileDevice</supportedProfiles>
   <filename>exBarcode</filename>
   <name>QR Code</name>
@@ -14,13 +14,16 @@
 	<uses-feature android:name="android.hardware.camera" />
 	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
 	<uses-feature android:name="android.hardware.screen.landscape" />
-		
+	
 	<!--If you wish to use the vibration when a barcode is detected, you need to set the permission like below-->
 	<uses-permission android:name="android.permission.VIBRATE"/>
 	
 	<!--Android 15 or higher can support this ANE-->
 	<uses-sdk android:minSdkVersion="15" />
-		
+	
+	<!--The new Permission thing on Android works ONLY if you are targetting Android SDK 23 or higher-->
+	<uses-sdk android:targetSdkVersion="23"/>
+	
 	<!--Zxing lib requires you to set this screen supports-->
 	<supports-screens 	android:anyDensity="true" 
 						android:largeScreens="true" 
@@ -66,13 +69,17 @@
 		<!--iOS 8.0 or higher can support this ANE-->
 		<key>MinimumOSVersion</key>
 		<string>8.0</string>
-			
+		
+		<!--A new feature for iOS 10 submissions requires you to add the 'purpose string' to your app when accessing a user's private data-->
+		<key>NSCameraUsageDescription</key>
+		<string>My description about why I need this feature in my app</string>
+		
 		<key>UIStatusBarStyle</key>
 		<string>UIStatusBarStyleBlackOpaque</string>
-			
+		
 		<key>UIRequiresPersistentWiFi</key>
 		<string>NO</string>
-			
+		
 		<key>UIDeviceFamily</key>
 		<array>
 			<string>1</string>
@@ -81,6 +88,7 @@
 		
 	]]></InfoAdditions>
     <requestedDisplayResolution>high</requestedDisplayResolution>
+	
   </iPhone>
   <initialWindow>
     <title>exBarcode</title>
@@ -107,6 +115,15 @@
     <!--<image512x512>icons/icon_512.png</image512x512>-->
   </icon>
   <extensions>
-    <extensionID>com.myflashlab.air.extensions.barcode</extensionID>
+	
+	<extensionID>com.myflashlab.air.extensions.barcode</extensionID>
+	
+	<!-- Required if you are targeting AIR 24+ and have to take care of Permissions mannually -->
+	<extensionID>com.myflashlab.air.extensions.permissionCheck</extensionID>
+	
+	<!-- The following dependency ANEs are only required when compiling for Android -->
+	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
+	
   </extensions>
 </application>
