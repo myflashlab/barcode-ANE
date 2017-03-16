@@ -2,7 +2,9 @@ package
 {
 	import com.myflashlab.air.extensions.barcode.Barcode;
 	import com.myflashlab.air.extensions.barcode.BarcodeEvent;
+	import com.myflashlab.air.extensions.inspector.Inspector;
 	import com.myflashlab.air.extensions.nativePermissions.PermissionCheck;
+	import com.myflashlab.air.extensions.dependency.OverrideAir;
 	
 	import com.doitflash.consts.Direction;
 	import com.doitflash.consts.Orientation;
@@ -180,8 +182,28 @@ package
 			}
 		}
 		
+		private function myDebuggerDelegate($ane:String, $class:String, $msg:String):void
+		{
+			trace("------------------");
+			trace("$ane = " + $ane);
+			trace("$class = " + $class);
+			trace("$msg = " + $msg);
+			trace("------------------");
+		}
+		
 		private function init():void
 		{
+			/*if (!Inspector.check(Barcode, true, true))
+			{
+				trace("Inspector.lastError = " + Inspector.lastError);
+				C.log("Inspector.lastError = " + Inspector.lastError);
+				return;
+			}*/
+			
+			// remove this line in production build or pass null as the delegate
+			OverrideAir.enableDebugger(myDebuggerDelegate);
+			
+			
 			// initialize the extension
 			_ex = new Barcode();
 			_ex.addEventListener(BarcodeEvent.RESULT, onResult);
@@ -212,6 +234,8 @@ package
 					C.log("isSupported: ", _ex.isSupported());
 				}
 			}
+			
+			onResize();
 		}
 		
 		private function onCancel(e:BarcodeEvent):void
