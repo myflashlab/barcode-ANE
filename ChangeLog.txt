@@ -1,6 +1,6 @@
 Barcode Scanner Adobe AIR Native Extension
 
-*Mar 17, 2016 - 3.3.0*
+*Mar 17, 2017 - 3.3.0*
 * Fixed [issue 34](https://github.com/myflashlab/barcode-ANE/issues/34)
 * Updated with the new OverrideAir ANE.
 * Even if you are building for iOS only, you still need to add the OverrideAir dependency.

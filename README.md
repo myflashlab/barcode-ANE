@@ -189,7 +189,7 @@ http://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
-*Mar 17, 2016 - 3.3.0*
+*Mar 17, 2017 - 3.3.0*
 * Fixed [issue 34](https://github.com/myflashlab/barcode-ANE/issues/34)
 * Updated with the new OverrideAir ANE.
 * Even if you are building for iOS only, you still need to add the OverrideAir dependency.
