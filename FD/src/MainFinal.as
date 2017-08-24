@@ -2,7 +2,6 @@ package
 {
 	import com.myflashlab.air.extensions.barcode.Barcode;
 	import com.myflashlab.air.extensions.barcode.BarcodeEvent;
-	import com.myflashlab.air.extensions.inspector.Inspector;
 	import com.myflashlab.air.extensions.nativePermissions.PermissionCheck;
 	import com.myflashlab.air.extensions.dependency.OverrideAir;
 	
@@ -31,12 +30,6 @@ package
 	import flash.ui.Keyboard;
 	import flash.events.KeyboardEvent;
 	import com.doitflash.mobileProject.commonCpuSrc.DeviceInfo;
-	import flash.events.StatusEvent;
-	//import flash.display.StageOrientation;
-	import flash.utils.getDefinitionByName;
-	import flash.utils.getQualifiedClassName;
-	import flash.utils.getQualifiedSuperclassName;
-	import flash.system.Capabilities;
 	
 	/**
 	 * ...
@@ -98,6 +91,9 @@ package
 			_list.vDirection = Direction.TOP_TO_BOTTOM;
 			_list.space = BTN_SPACE;
 			
+			// remove this line in production build or pass null as the delegate
+			OverrideAir.enableDebugger(myDebuggerDelegate);
+			
 			checkPermissions();
 		}
 		
@@ -157,7 +153,7 @@ package
 		
 		private function checkPermissions():void
 		{
-			// first you need to make sure you have access to the Strorage if you are on Android?
+			// first you need to make sure you have access to the Camera if you are on Android?
 			var permissionState:int = _exPermissions.check(PermissionCheck.SOURCE_CAMERA);
 			
 			if (permissionState == PermissionCheck.PERMISSION_UNKNOWN || permissionState == PermissionCheck.PERMISSION_DENIED)
@@ -184,30 +180,32 @@ package
 		
 		private function myDebuggerDelegate($ane:String, $class:String, $msg:String):void
 		{
-			trace("------------------");
-			trace("$ane = " + $ane);
-			trace("$class = " + $class);
-			trace("$msg = " + $msg);
-			trace("------------------");
+			trace($ane+"("+$class+") "+$msg);
 		}
 		
 		private function init():void
 		{
-			/*if (!Inspector.check(Barcode, true, true))
-			{
-				trace("Inspector.lastError = " + Inspector.lastError);
-				C.log("Inspector.lastError = " + Inspector.lastError);
-				return;
-			}*/
-			
-			// remove this line in production build or pass null as the delegate
-			OverrideAir.enableDebugger(myDebuggerDelegate);
-			
-			
 			// initialize the extension
 			_ex = new Barcode();
 			_ex.addEventListener(BarcodeEvent.RESULT, onResult);
 			_ex.addEventListener(BarcodeEvent.CANCEL, onCancel);
+			
+			if(_ex.os == Barcode.ANDROID)
+			{
+				var btn0:MySprite = createBtn("warmup");
+				btn0.addEventListener(MouseEvent.CLICK, warmup);
+				_list.add(btn0);
+			}
+			
+			function warmup(e:MouseEvent):void
+			{
+				// to speed up the launch time on Android, you may call the warmup method when
+				// it is appropriate in your application. This may be needed if you are using the
+				// full version of AndroidSupport dependency.
+				
+				C.log("the first time you call the warmup method, your app will freeze for a few seconds...");
+				_ex.warmup();
+			}
 			
 			var btn1:MySprite = createBtn("open Scanner");
 			btn1.addEventListener(MouseEvent.CLICK, open);
