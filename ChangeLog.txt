@@ -1,5 +1,8 @@
 Barcode Scanner Adobe AIR Native Extension
 
+*Dec 15, 2017 - 3.4.4*
+* Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB/).
+
 *Aug 24, 2017 - 3.4.0*
 * Updated to the latest version of zxing library.
 * Added method ```warmup()``` for Android to speedup the camera launch time if you are using the full version of the [androidSupport](https://github.com/myflashlab/common-dependencies-ANE/tree/master/androidSupport)
