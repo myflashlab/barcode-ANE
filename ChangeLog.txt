@@ -1,5 +1,8 @@
 Barcode Scanner Adobe AIR Native Extension
 
+*Feb 7, 2018 - 3.4.5*
+* Fixed [issue 53](https://github.com/myflashlab/barcode-ANE/issues/53)
+
 *Dec 15, 2017 - 3.4.4*
 * Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB/).
 
