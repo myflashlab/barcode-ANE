@@ -1,4 +1,4 @@
-# Barcode ANE V3.4.5 (Android+iOS)
+# Barcode ANE V3.4.6 (Android+iOS)
 This ANE enables AS3 AIR developers, to easily use the native camera on device and scan for almost all different barcodes and get the result to their AIR project.
 
 ## Supported barcodes:
@@ -22,8 +22,7 @@ This ANE enables AS3 AIR developers, to easily use the native camera on device a
 For the complete AS3 code usage, see the [demo project here](https://github.com/myflashlab/barcode-ANE/blob/master/AIR/src/MainFinal.as).
 
 ```actionscript
-import com.myflashlab.air.extensions.barcode.Barcode;
-import com.myflashlab.air.extensions.barcode.BarcodeEvent;
+import com.myflashlab.air.extensions.barcode.*;
 
 var _ex:Barcode = new Barcode();
 _ex.addEventListener(BarcodeEvent.RESULT, onResult);
@@ -85,7 +84,7 @@ FOR ANDROID:
 	<uses-sdk android:minSdkVersion="15" />
 	
 	<!--The new Permission thing on Android works ONLY if you are targetting Android SDK 23 or higher-->
-	<uses-sdk android:targetSdkVersion="23"/>
+	<uses-sdk android:targetSdkVersion="26"/>
 	
 	<!--Zxing lib requires you to set this screen supports-->
 	<supports-screens 	android:anyDensity="true" 
@@ -157,43 +156,42 @@ Embedding the ANE:
 
 	<extensionID>com.myflashlab.air.extensions.barcode</extensionID>
 	
-	<!-- Required if you are targeting AIR 24+ and have to take care of Permissions mannually -->
+	<!-- http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/ -->
 	<extensionID>com.myflashlab.air.extensions.permissionCheck</extensionID>
 	
-	<!-- download the dependency ANEs from https://github.com/myflashlab/common-dependencies-ANE -->
-	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
+	<!-- https://github.com/myflashlab/common-dependencies-ANE -->
 	<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>
 	
 </extensions>
 ```
 
 # Requirements
-* This ANE is dependent on **androidSupport-lite.ane** and **overrideAir.ane**. Download them from [here](https://github.com/myflashlab/common-dependencies-ANE).
-* Adobe AIR SDK 19 or higher
-* Android 15 or higher
-* iOS 8.0 or higher
+* This ANE is dependent on **permissionCheck**. Download it from [here](http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/).
+* AIR SDK 30+
+* Android 15+
+* iOS 8.0+
 
 # Permissions
-If you are targeting AIR 24 or higher, you need to [take care of the permissions manually](http://www.myflashlabs.com/adobe-air-app-permissions-android-ios/). Below are the list of Permissions this ANE might require. (Note: *Necessary Permissions* are those that the ANE will NOT work without them and *Optional Permissions* are those which are needed only if you are using some specific features in the ANE.)
+Below are the list of Permissions this ANE might require. Check out the demo project available at this repository to see how we have used the [PermissionCheck ANE](http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/) to ask for the permissions.
 
-Check out the demo project available at this repository to see how we have used our [PermissionCheck ANE](http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/) to ask for the permissions.
-
-**Necessary Permissions:**  
-
-1. PermissionCheck.SOURCE_CAMERA
-
-**Optional Permissions:**  
-none
+Necessary | Optional
+--------------------------- | ---------------------------
+[SOURCE_CAMERA](https://myflashlab.github.io/asdoc/com/myflashlab/air/extensions/nativePermissions/PermissionCheck.html#SOURCE_CAMERA) | NONE
 
 # Commercial Version
-http://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
+https://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
 
-![Barcode code scanner ANE](http://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-qr-code-595x738.jpg)
+![Barcode code scanner ANE](https://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-qr-code-595x738.jpg)
 
 # Tutorials
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
+*Sep 10, 2018 - 3.4.6*
+* Removed androidSupport dependeny.
+
 *Feb 7, 2018 - 3.4.5*
 * Fixed [issue 53](https://github.com/myflashlab/barcode-ANE/issues/53)
 

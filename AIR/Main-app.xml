@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<application xmlns="http://ns.adobe.com/air/application/27.0">
+<application xmlns="http://ns.adobe.com/air/application/30.0">
     <id>com.doitflash.exBarcode</id>
-    <versionNumber>3.4.5</versionNumber>
+    <versionNumber>3.4.6</versionNumber>
     <supportedProfiles>mobileDevice</supportedProfiles>
     <filename>exBarcode</filename>
     <name>QR Code</name>
@@ -18,11 +18,7 @@
             <!--If you wish to use the vibration when a barcode is detected, you need to set the permission like below-->
             <uses-permission android:name="android.permission.VIBRATE"/>
 
-            <!--Android 15 or higher can support this ANE-->
-            <uses-sdk android:minSdkVersion="15" />
-
-            <!--The new Permission thing on Android works ONLY if you are targetting Android SDK 23 or higher-->
-            <uses-sdk android:targetSdkVersion="23"/>
+            <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="26"/>
 
             <!--Zxing lib requires you to set this screen supports-->
             <supports-screens 	android:anyDensity="true"
@@ -129,13 +125,12 @@
 <extensions>
     
     <extensionID>com.myflashlab.air.extensions.barcode</extensionID>
-    
-    <!-- Required if you are targeting AIR 24+ and have to take care of Permissions mannually -->
     <extensionID>com.myflashlab.air.extensions.permissionCheck</extensionID>
     
-    <!-- download the dependency ANEs from https://github.com/myflashlab/common-dependencies-ANE -->
+    <!-- download dependency ANEs from https://github.com/myflashlab/common-dependencies-ANE -->
     <extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
-    <extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
-    
+    <extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>
+
 </extensions>
 </application>

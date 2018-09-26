@@ -1,5 +1,8 @@
 Barcode Scanner Adobe AIR Native Extension
 
+*Sep 10, 2018 - 3.4.6*
+* Removed androidSupport dependeny.
+
 *Feb 7, 2018 - 3.4.5*
 * Fixed [issue 53](https://github.com/myflashlab/barcode-ANE/issues/53)
 

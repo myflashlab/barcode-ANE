@@ -38,7 +38,6 @@ package
 	public class MainFinal extends Sprite 
 	{
 		private var _ex:Barcode;
-		private var _exPermissions:PermissionCheck = new PermissionCheck();
 		
 		private const BTN_WIDTH:Number = 150;
 		private const BTN_HEIGHT:Number = 60;
@@ -154,20 +153,20 @@ package
 		private function checkPermissions():void
 		{
 			// first you need to make sure you have access to the Camera if you are on Android?
-			var permissionState:int = _exPermissions.check(PermissionCheck.SOURCE_CAMERA);
+			var permissionState:int = PermissionCheck.check(PermissionCheck.SOURCE_CAMERA);
 			
 			if (permissionState == PermissionCheck.PERMISSION_UNKNOWN || permissionState == PermissionCheck.PERMISSION_DENIED)
 			{
-				_exPermissions.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
+				PermissionCheck.request(PermissionCheck.SOURCE_CAMERA, onRequestResult);
 			}
 			else
 			{
 				init();
 			}
 			
-			function onRequestResult($state:int):void
+			function onRequestResult($obj:Object):void
 			{
-				if ($state != PermissionCheck.PERMISSION_GRANTED)
+				if ($obj.state != PermissionCheck.PERMISSION_GRANTED)
 				{
 					C.log("You did not allow the app the required permissions!");
 				}
@@ -243,10 +242,10 @@ package
 		
 		private function onResult(e:BarcodeEvent):void
 		{
-			C.log("type is: ", e.param.type)
+			C.log("type is: ", e.param.type);
 			C.log("data is: ", e.param.data);
 			
-			trace("type is: ", e.param.type)
+			trace("type is: ", e.param.type);
 			trace("data is: ", e.param.data);
 		}
 		
