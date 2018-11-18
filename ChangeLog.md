@@ -1,5 +1,9 @@
 Barcode Scanner Adobe AIR Native Extension
 
+*Nov 17, 2018 - V3.4.7*
+* Works with OverrideAir ANE V5.6.1 or higher
+* Works with ANELAB V1.1.26 or higher
+
 *Sep 10, 2018 - 3.4.6*
 * Removed androidSupport dependeny.
 
