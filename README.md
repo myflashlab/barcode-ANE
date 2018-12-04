@@ -183,7 +183,7 @@ Necessary | Optional
 # Commercial Version
 https://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/
 
-![Barcode code scanner ANE](https://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-qr-code-595x738.jpg)
+[![Barcode code scanner ANE](https://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-qr-code-2018-595x738.jpg)](https://www.myflashlabs.com/product/qr-code-ane-adobe-air-native-extension/)
 
 # Tutorials
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
