@@ -90,8 +90,11 @@ package
 			_list.vDirection = Direction.TOP_TO_BOTTOM;
 			_list.space = BTN_SPACE;
 			
-			// remove this line in production build or pass null as the delegate
-			OverrideAir.enableDebugger(myDebuggerDelegate);
+			// Remove OverrideAir debugger in production builds
+			OverrideAir.enableDebugger(function ($ane:String, $class:String, $msg:String):void
+			{
+				trace($ane+" ("+$class+") "+$msg);
+			});
 			
 			checkPermissions();
 		}
@@ -177,11 +180,6 @@ package
 			}
 		}
 		
-		private function myDebuggerDelegate($ane:String, $class:String, $msg:String):void
-		{
-			trace($ane+"("+$class+") "+$msg);
-		}
-		
 		private function init():void
 		{
 			// initialize the extension
@@ -189,7 +187,7 @@ package
 			_ex.addEventListener(BarcodeEvent.RESULT, onResult);
 			_ex.addEventListener(BarcodeEvent.CANCEL, onCancel);
 			
-			if(_ex.os == Barcode.ANDROID)
+			if(OverrideAir.os == OverrideAir.ANDROID)
 			{
 				var btn0:MySprite = createBtn("warmup");
 				btn0.addEventListener(MouseEvent.CLICK, warmup);
