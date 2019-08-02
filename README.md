@@ -25,7 +25,7 @@ var _ex:Barcode = new Barcode();
 _ex.addEventListener(BarcodeEvent.RESULT, onResult);
 _ex.addEventListener(BarcodeEvent.CANCEL, onCancel);
 
-if(_ex.os == Barcode.ANDROID)
+if(OverrideAir.os == OverrideAir.ANDROID)
 {
 	// to speed up the launch time on Android, you may call the warmup method when
 	// it is appropriate in your application. This may be needed if you are using the
@@ -77,12 +77,6 @@ FOR ANDROID:
 	<!--If you wish to use the vibration when a barcode is detected, you need to set the permission like below-->
 	<uses-permission android:name="android.permission.VIBRATE"/>
 	
-	<!--Android 15 or higher can support this ANE-->
-	<uses-sdk android:minSdkVersion="15" />
-	
-	<!--The new Permission thing on Android works ONLY if you are targetting Android SDK 23 or higher-->
-	<uses-sdk android:targetSdkVersion="26"/>
-	
 	<!--Zxing lib requires you to set this screen supports-->
 	<supports-screens 	android:anyDensity="true" 
 						android:largeScreens="true" 
@@ -131,9 +125,9 @@ FOR iOS:
 -->
 <InfoAdditions>
 	
-	<!--iOS 8.0 or higher can support this ANE-->
+	<!--iOS 10.0 or higher can support this ANE-->
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>10.0</string>
 	
 	<!--A new feature for iOS 10 submissions requires you to add the 'purpose string' to your app when accessing a user's private data-->
 	<key>NSCameraUsageDescription</key>
@@ -168,7 +162,7 @@ Embedding the ANE:
 * This ANE is dependent on **permissionCheck**. Download it from [here](http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/).
 * AIR SDK 30+
 * Android 15+
-* iOS 8.0+
+* iOS 10.0+
 
 # Permissions
 Below are the list of Permissions this ANE might require. Check out the demo project available at this repository to see how we have used the [PermissionCheck ANE](http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/) to ask for the permissions.

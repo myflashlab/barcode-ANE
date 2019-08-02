@@ -1,5 +1,9 @@
 Barcode Scanner Adobe AIR Native Extension
 
+*Aug 2, 2019 - V3.4.71*
+* Added support for Android 64-bit
+* Removed **.os** property, use ```OverrideAir.os``` instead.
+
 *Nov 17, 2018 - V3.4.7*
 * Works with OverrideAir ANE V5.6.1 or higher
 * Works with ANELAB V1.1.26 or higher
