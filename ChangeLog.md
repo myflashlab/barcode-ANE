@@ -1,6 +1,12 @@
 Barcode Scanner Adobe AIR Native Extension
 
-*Aug 2, 2019 - V3.4.71*
+*Feb 05, 2020 - V4.0.1*
+- Add some minor improvements
+
+*Dec 28, 2019 - V4.0.0*
+- Add androidx libraries instead of android support
+
+*Aug 02, 2019 - V3.4.71*
 * Added support for Android 64-bit
 * Removed **.os** property, use ```OverrideAir.os``` instead.
 
