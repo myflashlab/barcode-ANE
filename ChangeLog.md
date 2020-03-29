@@ -8,7 +8,7 @@ Barcode Scanner Adobe AIR Native Extension
 
 *Aug 02, 2019 - V3.4.71*
 * Added support for Android 64-bit
-* Removed **.os** property, use ```OverrideAir.os``` instead.
+* Removed **.os** property, use `OverrideAir.os` instead.
 
 *Nov 17, 2018 - V3.4.7*
 * Works with OverrideAir ANE V5.6.1 or higher
@@ -25,7 +25,7 @@ Barcode Scanner Adobe AIR Native Extension
 
 *Aug 24, 2017 - 3.4.0*
 * Updated to the latest version of zxing library.
-* Added method ```warmup()``` for Android to speedup the camera launch time if you are using the full version of the [androidSupport](https://github.com/myflashlab/common-dependencies-ANE/tree/master/androidSupport)
+* Added method `warmup()` for Android to speedup the camera launch time if you are using the full version of the [androidSupport](https://github.com/myflashlab/common-dependencies-ANE/tree/master/androidSupport)
 
 *Mar 17, 2017 - 3.3.0*
 * Fixed [issue 34](https://github.com/myflashlab/barcode-ANE/issues/34)
