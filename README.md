@@ -152,8 +152,7 @@ Embedding the ANE:
 	
 	<!-- https://github.com/myflashlab/common-dependencies-ANE -->
 	<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
-	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>
-	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.androidx.core</extensionID>
 	
 </extensions>
 ```
@@ -161,7 +160,7 @@ Embedding the ANE:
 # Requirements
 * This ANE is dependent on **permissionCheck**. Download it from [here](http://www.myflashlabs.com/product/native-access-permission-check-settings-menu-air-native-extension/).
 * AIR SDK 30+
-* Android 15+
+* Android 19+
 * iOS 10.0+
 
 # Permissions

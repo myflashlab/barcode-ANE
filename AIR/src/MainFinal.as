@@ -1,7 +1,6 @@
 package 
 {
-	import com.myflashlab.air.extensions.barcode.Barcode;
-	import com.myflashlab.air.extensions.barcode.BarcodeEvent;
+	import com.myflashlab.air.extensions.barcode.*;
 	import com.myflashlab.air.extensions.nativePermissions.PermissionCheck;
 	import com.myflashlab.air.extensions.dependency.OverrideAir;
 	
@@ -30,6 +29,7 @@ package
 	import flash.ui.Keyboard;
 	import flash.events.KeyboardEvent;
 	import com.doitflash.mobileProject.commonCpuSrc.DeviceInfo;
+	import flash.utils.setTimeout;
 	
 	/**
 	 * ...
@@ -132,6 +132,7 @@ package
 		{
 			if (_txt)
 			{
+				_txt.y = 150 * (1 / DeviceInfo.dpiScaleMultiplier);
 				_txt.width = stage.stageWidth * (1 / DeviceInfo.dpiScaleMultiplier);
 				
 				C.x = 0;
@@ -201,7 +202,7 @@ package
 				// full version of AndroidSupport dependency.
 				
 				C.log("the first time you call the warmup method, your app will freeze for a few seconds...");
-				_ex.warmup();
+				setTimeout(_ex.warmup,500);
 			}
 			
 			var btn1:MySprite = createBtn("open Scanner");
