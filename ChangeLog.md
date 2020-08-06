@@ -1,5 +1,9 @@
 Barcode Scanner Adobe AIR Native Extension
 
+*Aug 04, 2020 - v5.0.0*
+- Upgrade dependencies to the latest version.
+- Fixed and improve some minor issues and refactor native codes.
+
 *Apr 04, 2020 - V4.0.1*
 - Add androidx libraries instead of android support
 
